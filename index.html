@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Default language is English -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nielson Razzaka Alfarizi - AI Expert & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            background: var(--light);
+        }
+
+        .skill-bar {
+            transition: width 1.5s ease-in-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .creation-indicator {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .creation-indicator:hover {
+            transform: scale(1.05);
+        }
+        
+        .creation-indicator.clicked {
+            animation: stickerPeel 0.5s forwards;
+        }
+        
+        .warning-text {
+            display: inline-block;
+            color: #ef4444;
+            font-weight: bold;
+            animation: blink 0.5s infinite;
+            position: relative;
+            padding-right: 24px;
+            margin-right: 1rem;
+        }
+
+        .warning-text::after {
+            content: "→";
+            position: absolute;
+            right: 0;
+            animation: point 1s infinite alternate;
+        }
+
+        @keyframes point {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(5px); }
+        }
+        
+        @keyframes stickerPeel {
+            0% { transform: rotate(0) scale(1); }
+            50% { transform: rotate(5deg) scale(1.1); }
+            100% { transform: rotate(0) scale(1); }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; text-shadow: 0 0 5px #ef4444; }
+            50% { opacity: 0.5; text-shadow: 0 0 10px #ef4444; }
+        }
+
+        /* Style for language toggle button */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Language Toggle Button -->
+    <button id="languageToggle" class="language-toggle">ID / EN</button>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div id="particles-js"></div>
+        <div class="container mx-auto px-6 z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4" ><span data-en="Hello, I'm" data-id="Halo, Saya">Hello, I'm</span> <span class="text-blue-500">Nielson Razzaka Alfarizi</span></h1>
+                    <p class="text-xl md:text-2xl mb-6"><span class="text-green-400 font-medium" data-en="AI Expert & Full Stack Developer" data-id="Ahli AI & Pengembang Full Stack">AI Expert & Full Stack Developer</span></p>
+                    <p class="text-gray-600 mb-8 max-w-lg" data-en="I am a student majoring in Network and Communication Engineering with a great interest in the world of technology, especially computer networks and system security. Experienced in industrial practice at TVRI Lampung, and actively learning through national and international certifications. I aspire to become an innovative Network Engineer and IT Specialist who makes a real contribution to the technology industry." data-id="Saya adalah seorang mahasiswa jurusan Teknik Jaringan dan Komunikasi dengan minat besar pada dunia teknologi, khususnya jaringan komputer dan keamanan sistem. Berpengalaman dalam praktik industri di TVRI Lampung, dan aktif belajar melalui sertifikasi nasional dan internasional. Saya bercita-cita menjadi seorang Insinyur Jaringan dan Spesialis IT yang inovatif yang memberikan kontribusi nyata bagi industri teknologi.">I am a student majoring in Network and Communication Engineering with a great interest in the world of technology, especially computer networks and system security. Experienced in industrial practice at TVRI Lampung, and actively learning through national and international certifications. I aspire to become an innovative Network Engineer and IT Specialist who makes a real contribution to the technology industry.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#about" class="px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all text-center" data-en="About Me" data-id="Tentang Me">Contact Me</a>
+                        <a href="#skills" class="px-8 py-3 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-all text-center" data-en="My Skills" data-id="Keterampilan">View Work</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQGp41zFF69x0g/profile-displayphoto-shrink_200_200/B56ZUDIK2eHoAc-/0/1739514228577?e=1756944000&v=beta&t=FJhoQR1-DQxDDyfKZdemdbAn8OpkoAUDPMF-gGHIIXg" alt="Professional headshot of Nielson Razzaka Alfarizi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12"><span data-en="About" data-id="Tentang">About</span> <span class="text-blue-500">Me</span></h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6" data-en="Who Am I?" data-id="Siapa Saya?">Who Am I?</h3>
+                    <p class="text-gray-600 mb-6" data-en="I am a student majoring in Network and Communication Engineering with a great interest in the world of technology, especially computer networks and system security. Experienced in industrial practice at TVRI Lampung, and actively learning through national and international certifications. I aspire to become an innovative Network Engineer and IT Specialist who makes a real contribution to the technology industry." data-id="Saya adalah seorang mahasiswa jurusan Teknik Jaringan dan Komunikasi dengan minat besar pada dunia teknologi, khususnya jaringan komputer dan keamanan sistem. Berpengalaman dalam praktik industri di TVRI Lampung, dan aktif belajar melalui sertifikasi nasional dan internasional. Saya bercita-cita menjadi seorang Insinyur Jaringan dan Spesialis IT yang inovatif yang memberikan kontribusi nyata bagi industri teknologi.">
+                        I am a student majoring in Network and Communication Engineering with a great interest in the world of technology, especially computer networks and system security. Experienced in industrial practice at TVRI Lampung, and actively learning through national and international certifications. I aspire to become an innovative Network Engineer and IT Specialist who makes a real contribution to the technology industry.
+                    </p>
+                    <p class="text-gray-600 mb-6 italic" data-en="&quot;I believe that technological development has no limits—what limits it is only how far humans are willing to understand and use it wisely.&quot;" data-id="&quot;Saya percaya bahwa perkembangan teknologi tidak memiliki batas—yang membatasinya hanyalah seberapa jauh manusia bersedia memahami dan menggunakannya dengan bijak.&quot;">
+                        "I believe that technological development has no limits—what limits it is only how far humans are willing to understand and use it wisely."
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div>
+                            <p class="font-medium" data-en="Name:" data-id="Nama:">Name:</p>
+                            <p class="text-gray-600">Nielson Razzaka Alfarizi</p>
+                        </div>
+                        <div>
+                            <p class="font-medium" data-en="Email:" data-id="Email:">Email:</p>
+                            <p class="text-gray-600">-</p>
+                        </div>
+                        <div>
+                            <p class="font-medium" data-en="Phone:" data-id="Telepon:">Phone:</p>
+                            <p class="text-gray-600">-</p>
+                        </div>
+                        <div>
+                            <p class="font-medium" data-en="Location:" data-id="Lokasi:">Location:</p>
+                            <p class="text-gray-600">Bandar Lampung, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/in/nielson-razzaka-alfarizi-680a33319/" target="_blank" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <!-- Instagram Button Added Here -->
+                        <a href="https://www.instagram.com/nsn_rzak78/" target="_blank" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 6.847c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5-2.02-4.5-4.5-4.5zm0 7.347c-2.973 0-5.399-2.426-5.399-5.399 0-2.973 2.426-5.399 5.399-5.399s5.399 2.426 5.399 5.399c0 2.973-2.426 5.399-5.399 5.399zm6.54-.964c-.819 0-1.484.665-1.484 1.484s.665 1.484 1.484 1.484 1.484-.665 1.484-1.484-.665-1.484-1.484-1.484z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- My Education Section -->
+                <div class="md:w-1/2 relative">
+                    <h3 class="text-2xl font-semibold mb-6"><span data-en="My" data-id="Pendidikan">My</span> <span class="text-blue-500">Education</span></h3>
+                    <div class="border-l-2 border-blue-500 pl-8 space-y-8">
+                        <!-- Education Item -->
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-lg" data-en="Sumatera Institute of Technology" data-id="Institut Teknologi Sumatera">Sumatera Institute of Technology</h4>
+                            <p class="text-blue-500 mb-1" data-en="Telecommunication Engineering" data-id="Teknik Telekomunikasi">Telecommunication Engineering</p>
+                            <p class="text-gray-600" data-en="Prospective New Student (Camaba) via SNBP pathway." data-id="Calon Mahasiswa Baru (Camaba) jalur SNBP.">
+                                Prospective New Student (Camaba) via SNBP pathway.
+                            </p>
+                        </div>
+                        
+                        <!-- Education Item -->
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-lg" data-en="SMKN 1 Bandar Lampung" data-id="SMKN 1 Bandar Lampung">SMKN 1 Bandar Lampung</h4>
+                            <p class="text-blue-500 mb-1" data-en="Network and Communication Engineering (TJKT) | 2022–2025" data-id="Teknik Jaringan dan Komunikasi (TJKT) | 2022–2025">Network and Communication Engineering (TJKT) | 2022–2025</p>
+                            <p class="text-gray-600" data-en="Focused on computer networks and system security." data-id="Berfokus pada jaringan komputer dan keamanan sistem.">
+                                Focused on computer networks and system security.
+                            </p>
+                        </div>
+
+                        <!-- Education Item -->
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-lg" data-en="SMPN 29 Bandar Lampung" data-id="SMPN 29 Bandar Lampung">SMPN 29 Bandar Lampung</h4>
+                            <p class="text-gray-600">
+                                <!-- Optional detail, e.g., General curriculum -->
+                            </p>
+                        </div>
+
+                        <!-- Education Item -->
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-lg" data-en="SDN 1 Waydadi" data-id="SDN 1 Waydadi">SDN 1 Waydadi</h4>
+                            <p class="text-gray-600">
+                                <!-- Optional detail, e.g., Primary education -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 relative">
+                    <h3 class="text-2xl font-semibold mb-6"><span data-en="My" data-id="Pengalaman">My</span> <span class="text-blue-500">Experience</span></h3>
+                    <div class="border-l-2 border-blue-500 pl-8 space-y-8">
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-lg" data-en="Field Work Practice" data-id="Praktik Kerja Lapangan">Field Work Practice</h4>
+                            <p class="text-blue-500 mb-1" data-en="TVRI Lampung | August–December 2024" data-id="TVRI Lampung | Agustus–Desember 2024">TVRI Lampung | August–December 2024</p>
+                            <p class="text-gray-600" data-en="Developed skills in networking and communication, and applied learned theories in an industrial environment." data-id="Mengembangkan keterampilan dalam jaringan dan komunikasi, serta menerapkan teori yang dipelajari di lingkungan industri.">
+                                Developed skills in networking and communication, and applied learned theories in an industrial environment.
+                            </p>
+                        </div>
+                        
+                        <!-- Timeline Item -->
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-lg" data-en="School Projects and Network Configuration" data-id="Proyek Sekolah dan Konfigurasi Jaringan">School Projects and Network Configuration</h4>
+                            <p class="text-blue-500 mb-1" data-en="SMKN 1 Bandar Lampung | 2022–2025" data-id="SMKN 1 Bandar Lampung | 2022–2025">SMKN 1 Bandar Lampung | 2022–2025</p>
+                            <p class="text-gray-600" data-en="Participated in network configuration projects and communication system development at school." data-id="Berpartisipasi dalam proyek konfigurasi jaringan dan pengembangan sistem komunikasi di sekolah.">
+                                Participated in network configuration projects and communication system development at school.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12" data-en="Certifications" data-id="Sertifikasi">Certifications</h2>
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
+                    <img src="https://socialwifi.com/media/covers/Kz9BFrcbf1-800.webp" alt="MikroTik Logo" class="w-8 h-8 object-contain">
+                    <div>
+                        <h4 class="font-bold" data-en="MTCNA Certificate – MikroTik" data-id="Sertifikat MTCNA – MikroTik">MTCNA Certificate – MikroTik</h4>
+                        <p class="text-gray-600" data-en="Valid: Apr 2025 – Apr 2028 | ID: 2504NAS321" data-id="Berlaku: April 2025 – April 2028 | ID: 2504NAS321">Valid: Apr 2025 – Apr 2028 | ID: 2504NAS321</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzGNYX6M4X-BfBpM_Fhl0UCoFIZ_dOeo19IA&s" alt="Dicoding Logo" class="w-8 h-8 object-contain">
+                    <div>
+                        <h4 class="font-bold" data-en="Learn Basic AI – Dicoding" data-id="Belajar Dasar AI – Dicoding">Learn Basic AI – Dicoding</h4>
+                        <p class="text-gray-600" data-en="Valid until Feb 2028 | ID: JLX1YD6GP72" data-id="Berlaku hingga Februari 2028 | ID: JLX1YD6GP72">Valid until Feb 2028 | ID: JLX1YD6GP72</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzGNYX6M4X-BfBpM_Fhl0UCoFIZ_dOeo19IA&s" alt="Dicoding Logo" class="w-8 h-8 object-contain">
+                    <div>
+                        <h4 class="font-bold" data-en="Learn Basic Data Visualization – Dicoding" data-id="Belajar Dasar Visualisasi Data – Dicoding">Learn Basic Data Visualization – Dicoding</h4>
+                        <p class="text-gray-600" data-en="Valid until Feb 2028 | ID: NVP7S9NRXR0" data-id="Berlaku hingga Februari 2028 | ID: NVP7S9NRXR0">Valid until Feb 2028 | ID: NVP7S9NRXR0</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzGNYX6M4X-BfBpM_Fhl0UCoFIZ_dOeo19IA&s" alt="Dicoding Logo" class="w-8 h-8 object-contain">
+                    <div>
+                        <h4 class="font-bold" data-en="Start Programming with Python – Dicoding" data-id="Mulai Pemrograman dengan Python – Dicoding">Start Programming with Python – Dicoding</h4>
+                        <p class="text-gray-600" data-en="Valid until Feb 2028 | ID: L4PQE6VVP01" data-id="Berlaku hingga Februari 2028 | ID: L4PQE6VVP01">Valid until Feb 2028 | ID: L4PQE6VVP01</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
+                    <img src="https://logowik.com/content/uploads/images/sololearn8062.jpg" alt="SoloLearn Logo" class="w-8 h-8 object-contain">
+                    <div>
+                        <h4 class="font-bold" data-en="Prompt Engineering – SoloLearn" data-id="Prompt Engineering – SoloLearn">Prompt Engineering – SoloLearn</h4>
+                        <p class="text-gray-600" data-en="Issued Jul 2024 | ID: CC-Y9G3TEP3" data-id="Diterbitkan Juli 2024 | ID: CC-Y9G3TEP3">Issued Jul 2024 | ID: CC-Y9G3TEP3</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
+                    <img src="https://logowik.com/content/uploads/images/sololearn8062.jpg" alt="SoloLearn Logo" class="w-8 h-8 object-contain">
+                    <div>
+                        <h4 class="font-bold" data-en="C++ – SoloLearn" data-id="C++ – SoloLearn">C++ – SoloLearn</h4>
+                        <p class="text-gray-600" data-en="Issued Dec 2022 | ID: CC-ID9S07GL" data-id="Diterbitkan Desember 2022 | ID: CC-ID9S07GL">Issued Dec 2022 | ID: CC-ID9S07GL</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
+                    <img src="https://logowik.com/content/uploads/images/sololearn8062.jpg" alt="SoloLearn Logo" class="w-8 h-8 object-contain">
+                    <div>
+                        <h4 class="font-bold" data-en="HTML – SoloLearn" data-id="HTML – SoloLearn">HTML – SoloLearn</h4>
+                        <p class="text-gray-600" data-en="ID: CT-ESC2UR0V" data-id="ID: CT-ESC2UR0V">ID: CT-ESC2UR0V</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4"><span data-en="My" data-id="Keterampilan">My</span> <span class="text-blue-500">Skills</span></h2>
+            <div class="text-center mb-8">
+                <p id="warningText" class="warning-text mt-2" data-en="Don't touch! It's dangerous!" data-id="Jangan sentuh! Ini berbahaya!">Don't touch! It's dangerous!</p>
+                <div id="creationIndicator" class="creation-indicator inline-block">
+                    <p class="text-gray-500" data-en-full="Website creation: <span class='font-medium'>100% Manual</span>" data-id-full="Pembuatan situs web: <span class='font-medium'>100% Manual</span>" data-en-clicked="Website creation: <span class='font-medium'>40% Manual</span> | <span class='font-medium'>60% AI</span>" data-id-clicked="Pembuatan situs web: <span class='font-medium'>40% Manual</span> | <span class='font-medium'>60% AI</span>">
+                        Website creation: <span class="font-medium">100% Manual</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 flex items-center gap-2" ><span data-en="Technical Skills" data-id="Keterampilan Teknis">Technical Skills</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span data-en="Networking & Mikrotik" data-id="Jaringan & Mikrotik">Networking & Mikrotik</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-0 bg-blue-500 skill-bar" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span data-en="Network Security" data-id="Keamanan Jaringan">Network Security</span>
+                                <span>68%</span>
+                            </div>
+                            <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-0 bg-blue-500 skill-bar" style="width: 68%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span data-en="IT Management" data-id="Manajemen IT">IT Management</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-0 bg-blue-500 skill-bar" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span data-en="Programming: Python, C++, HTML" data-id="Pemrograman: Python, C++, HTML">Programming: Python, C++, HTML</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-0 bg-blue-500 skill-bar" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span data-en="Data Visualization" data-id="Visualisasi Data">Data Visualization</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-0 bg-blue-500 skill-bar" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span data-en="Artificial Intelligence" data-id="Kecerdasan Buatan">Artificial Intelligence</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-0 bg-blue-500 skill-bar" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill Item -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span data-en="Prompt Engineering" data-id="Prompt Engineering">Prompt Engineering</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-0 bg-blue-500 skill-bar" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Empty for now but needed for smooth scroll -->
+    <section id="contact" class="py-20"></section>
+    
+    <!-- Portfolio Section - Empty for now but needed for smooth scroll -->
+    <section id="portfolio" class="py-20 bg-gray-100"></section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-800 text-gray-300">
+        <div class="container mx-auto px-6 text-center">
+            <p data-en="© Nielson Razzaka Alfarizi. All rights reserved." data-id="© Nielson Razzaka Alfarizi. Semua hak dilindungi undang-undang.">© <span id="year"></span> Nielson Razzaka Alfarizi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js background
+        if (document.getElementById('particles-js')) {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#3b82f6"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.3,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#3b82f6",
+                        "opacity": 0.2,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Creation indicator animation
+        const creationIndicator = document.getElementById('creationIndicator');
+        let clicked = false;
+        
+        creationIndicator.addEventListener('click', () => {
+            if (!clicked) {
+                creationIndicator.classList.add('clicked');
+                
+                setTimeout(() => {
+                    const currentLang = document.documentElement.lang;
+                    const creationTextElement = creationIndicator.querySelector('p');
+                    if (currentLang === 'en') {
+                        creationTextElement.innerHTML = creationTextElement.dataset.enClicked;
+                    } else {
+                        creationTextElement.innerHTML = creationTextElement.dataset.idClicked;
+                    }
+                    warningText.style.display = 'none';
+                    clicked = true;
+                }, 500);
+            }
+        });
+
+        // Language Toggle Functionality
+        const languageToggleBtn = document.getElementById('languageToggle');
+        const translatableElements = document.querySelectorAll('[data-en], [data-id], [data-en-full], [data-id-full], [data-en-clicked], [data-id-clicked]');
+
+        // Function to set language
+        function setLanguage(lang) {
+            document.documentElement.lang = lang; // Set lang attribute on <html> tag
+            localStorage.setItem('preferredLanguage', lang); // Save preference
+
+            translatableElements.forEach(element => {
+                // Handle elements with direct text content
+                if (element.dataset.en && element.dataset.id) {
+                    element.textContent = lang === 'en' ? element.dataset.en : element.dataset.id;
+                }
+                // Handle elements with innerHTML content (like creation indicator)
+                if (element.dataset.enFull && element.dataset.idFull) {
+                    if (!element.classList.contains('clicked')) {
+                        element.innerHTML = lang === 'en' ? element.dataset.enFull : element.dataset.idFull;
+                    } else if (element.dataset.enClicked && element.dataset.idClicked) {
+                        element.innerHTML = lang === 'en' ? element.dataset.enClicked : element.dataset.idClicked;
+                    }
+                }
+            });
+
+            // Update the warning text visibility based on language and clicked state
+            if (clicked) { // If creation indicator has been clicked
+                warningText.style.display = 'none';
+            } else {
+                warningText.style.display = 'inline-block';
+            }
+        }
+
+        // Check for saved language preference on load
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+            setLanguage(savedLang);
+        } else {
+            setLanguage('en'); // Default to English if no preference saved
+        }
+
+        // Toggle language on button click
+        languageToggleBtn.addEventListener('click', () => {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === 'en' ? 'id' : 'en';
+            setLanguage(newLang);
+        });
+    </script>
+</body>
+</html>
